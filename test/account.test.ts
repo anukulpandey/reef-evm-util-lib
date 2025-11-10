@@ -23,7 +23,7 @@ describe("Account tests", () => {
     "should fetch the balance from revive evm address",
     async () => {
         const reviveAddress = "0x9621dde636de098b43efb0fa9b61facfe328f99d";
-        const balance = await account.revivePallet.ethGetBalance(reviveAddress);
+        const balance = await account.revivePallet.getBalance(reviveAddress);
         console.log("💵 Revive Balance:", balance);
         expect(balance).toBeDefined();
     },

@@ -9,7 +9,7 @@ export const getNativeAddress = async (
   return (await provider.api.query.revive.originalAccount(reviveEvmAddress)).toString();
 };
 
-export async function ethGetBalance(reviveEvmAddress: string): Promise<string> {
+export async function getBalance(reviveEvmAddress: string): Promise<string> {
   const selectedNetwork = reefState.getNetwork();
   const provider = new ethers.JsonRpcProvider(selectedNetwork.evmRpcUrl);
 

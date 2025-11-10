@@ -24,6 +24,11 @@ export class MnemonicSigner implements Signer {
     this.mnemonic = mnemonic;
   }
 
+  async getAddress(): Promise<string> {
+    const pair: any = await keyPairFromMnemonic(this.mnemonic);
+    return pair.address;
+  }
+
   async signPayload(payload: SignerPayloadJSON): Promise<SignerResult> {
     const registry = new TypeRegistry();
     registry.setSignedExtensions(payload.signedExtensions);
