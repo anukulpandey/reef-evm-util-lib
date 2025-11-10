@@ -1,5 +1,6 @@
 import { describe, test, expect, beforeAll } from "vitest";
 import { network,account,reefState } from "../src/index";
+import { Keyring } from "@polkadot/api";
 
 describe("Account tests", () => {
   //init reef state ( network , provider )
@@ -37,5 +38,18 @@ describe("Account tests", () => {
         console.log("💵 Native Balance:", balance);
         expect(balance).toBeDefined();
     },
+   
+  );
+
+  test(
+    "should bridge tokens from native to evm revive",
+    {timeout:20000},
+    async () => {
+        const keyring = new Keyring({ type: "sr25519" });
+        const alice = keyring.addFromUri("//Alice");
+        const tx = await account.nativePallet.sendToReviveEvmAddress(alice,"0x051c64f41fabdb6ee74767ff0390cd52a0749d56");
+        console.log("🔗 Bridge Tx Hash:", tx);
+    },
+    
   );
 });
