@@ -1,31 +1,18 @@
 import { describe, test, expect } from "vitest";
-import { createAddressObservable } from "../src/utils/pusher.ts";
-import { firstValueFrom, timeout, catchError, of } from "rxjs";
+import {evm} from "../src/index";
+import { firstValueFrom } from "rxjs";
+import { filter } from "rxjs/operators";
 
 describe("Pusher live events", () => {
-  test(
-    "should receive an addresses event within 20s",
-    async () => {
-      const address$ = createAddressObservable();
+  test("should receive an addresses event (no timeout)", async () => {
+    const data = await firstValueFrom(
+      evm.evmAddressesEventsObs$.pipe(
+        filter((event) => Array.isArray(event?.addresses) && event.addresses.length > 0)
+      )
+    );
 
-      const data = await firstValueFrom(
-        address$.pipe(
-          timeout({ each: 20000 }),
-          catchError((err) => {
-            console.warn("❌ Timed out waiting for Pusher event", err);
-            return of(null);
-          })
-        )
-      );
-
-      if (data) {
-        console.log("✅ Received:", data.addresses);
-        expect(Array.isArray(data.addresses)).toBe(true);
-      } else {
-        console.log("❌ No event received.");
-        expect(data).toBeNull();
-      }
-    },
-    25000
-  );
+    console.log("✅ Received:", data.addresses);
+    expect(Array.isArray(data.addresses)).toBe(true);
+    expect(data.addresses.length).toBeGreaterThan(0);
+  },25000);
 });
