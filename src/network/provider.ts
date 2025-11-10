@@ -6,5 +6,6 @@ export const initProvider = async (providerUrl: string) => {
     const api = await ApiPromise.create({ provider: wsProvider });
     const provider = wsProvider as Provider;
     provider.api = api;
+    await provider.api.isReadyOrError;
     return provider;
 }
