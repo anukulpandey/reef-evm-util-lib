@@ -1,4 +1,5 @@
 export interface NetworkConfig{
+    name:string;
     substrateWsRpcUrl:string;
     substrateRpcUrl:string;
     evmRpcUrl:string;
