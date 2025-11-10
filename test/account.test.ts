@@ -18,6 +18,7 @@ describe("Account tests", () => {
     async () => {
         const reviveAddress = "0x9621dde636de098b43efb0fa9b61facfe328f99d";
         const nativeAddress = await account.revivePallet.getNativeAddress(provider.api,reviveAddress);
+        console.log("🏠 Native Address:", nativeAddress);
         expect(nativeAddress.length).toBeGreaterThan(0);
     },
   );
@@ -27,6 +28,7 @@ describe("Account tests", () => {
     async () => {
         const reviveAddress = "0x9621dde636de098b43efb0fa9b61facfe328f99d";
         const balance = await account.revivePallet.ethGetBalance(reviveAddress);
+        console.log("💵 Balance:", balance);
         expect(balance).toBeDefined();
     },
   );
