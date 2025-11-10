@@ -20,11 +20,21 @@ describe("Account tests", () => {
   );
 
   test(
-    "should log the balance of revive evm address",
+    "should fetch the balance from revive evm address",
     async () => {
         const reviveAddress = "0x9621dde636de098b43efb0fa9b61facfe328f99d";
         const balance = await account.revivePallet.ethGetBalance(reviveAddress);
-        console.log("💵 Balance:", balance);
+        console.log("💵 Revive Balance:", balance);
+        expect(balance).toBeDefined();
+    },
+  );
+
+  test(
+    "should fetch the balance from native address",
+    async () => {
+        const nativeAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
+        const balance = await account.nativePallet.getBalance(nativeAddress);
+        console.log("💵 Native Balance:", balance);
         expect(balance).toBeDefined();
     },
   );
