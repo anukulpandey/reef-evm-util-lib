@@ -1,12 +1,11 @@
-import { describe, test, expect, afterAll, beforeAll } from "vitest";
-import { network,account } from "../src/index";
-import { initReefState } from "../src/reefState/initReefState";
+import { describe, test, expect, beforeAll } from "vitest";
+import { network,account,reefState } from "../src/index";
 
 describe("Account tests", () => {
   //init reef state ( network , provider )
   beforeAll(
     async () => {
-      await initReefState(network.config.NETWORK_CONFIGS.localhost);
+      await reefState.initReefState(network.config.NETWORK_CONFIGS.localhost);
     },
   );
 
