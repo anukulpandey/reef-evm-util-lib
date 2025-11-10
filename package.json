@@ -25,6 +25,7 @@
     "vitest": "^4.0.4"
   },
   "dependencies": {
+    "@polkadot/api": "^16.5.1",
     "pusher-js": "^8.4.0",
     "rxjs": "^7.8.2"
   }

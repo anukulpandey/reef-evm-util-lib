@@ -16,7 +16,6 @@ export function createAddressObservable(): Observable<AddressEvent> {
     const channel = pusher.subscribe("block-events");
 
     const handler = (data: AddressEvent) => {
-      console.log("📦 Received addresses:", data.addresses);
       subscriber.next(data);
     };
 
