@@ -1,15 +1,12 @@
 import { describe, test, expect, afterAll, beforeAll } from "vitest";
 import { network,account } from "../src/index";
-import { getProvider, initReefState } from "../src/reefState/initReefState";
+import { initReefState } from "../src/reefState/initReefState";
 
 describe("Account tests", () => {
-  let provider: Awaited<ReturnType<typeof network.provider.initProvider>>;
-
-  //init provider
+  //init reef state ( network , provider )
   beforeAll(
     async () => {
       await initReefState(network.config.NETWORK_CONFIGS.localhost);
-      provider = getProvider();
     },
   );
 
@@ -17,7 +14,7 @@ describe("Account tests", () => {
     "should fetch native address from revive mapping",
     async () => {
         const reviveAddress = "0x9621dde636de098b43efb0fa9b61facfe328f99d";
-        const nativeAddress = await account.revivePallet.getNativeAddress(provider.api,reviveAddress);
+        const nativeAddress = await account.revivePallet.getNativeAddress(reviveAddress);
         console.log("🏠 Native Address:", nativeAddress);
         expect(nativeAddress.length).toBeGreaterThan(0);
     },
@@ -32,8 +29,4 @@ describe("Account tests", () => {
         expect(balance).toBeDefined();
     },
   );
-
-  afterAll(async () => {
-    await provider.api.disconnect();
-  });
 });

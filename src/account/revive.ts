@@ -1,12 +1,12 @@
-import type { ApiPromise } from "@polkadot/api";
 import { ethers } from "ethers";
-import { getNetwork } from "../reefState/initReefState";
+import { getNetwork, getProvider } from "../reefState/initReefState";
+import type { Provider } from "../types/provider";
 
 export const getNativeAddress = async (
-  api: ApiPromise,
   reviveEvmAddress: string
 ): Promise<string> => {
-  return (await api.query.revive.originalAccount(reviveEvmAddress)).toString();
+    const provider:Provider = getProvider();
+  return (await provider.api.query.revive.originalAccount(reviveEvmAddress)).toString();
 };
 
 export async function ethGetBalance(reviveEvmAddress: string): Promise<string> {
