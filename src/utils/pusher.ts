@@ -1,9 +1,6 @@
 import Pusher from "pusher-js";
 import { Observable } from "rxjs";
-
-export interface AddressEvent {
-  addresses: string[];
-}
+import type { AddressEvent } from "../types/pusher";
 
 export function createAddressObservable(): Observable<AddressEvent> {
   return new Observable<AddressEvent>((subscriber) => {

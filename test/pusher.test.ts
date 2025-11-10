@@ -12,7 +12,7 @@ describe("Pusher live events", () => {
         address$.pipe(
           timeout({ each: 20000 }),
           catchError((err) => {
-            console.warn("⚠️ Timed out waiting for Pusher event", err);
+            console.warn("❌ Timed out waiting for Pusher event", err);
             return of(null);
           })
         )
@@ -22,10 +22,10 @@ describe("Pusher live events", () => {
         console.log("✅ Received:", data.addresses);
         expect(Array.isArray(data.addresses)).toBe(true);
       } else {
-        console.log("⚠️ No event received.");
+        console.log("❌ No event received.");
         expect(data).toBeNull();
       }
     },
-    25000 // allow 25s timeout for the test itself
+    25000
   );
 });
