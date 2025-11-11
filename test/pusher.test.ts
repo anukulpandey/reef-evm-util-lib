@@ -6,7 +6,7 @@ import { filter } from "rxjs/operators";
 describe("Pusher live events", () => {
   test("should receive an addresses event (no timeout)", async () => {
     const data = await firstValueFrom(
-      evm.evmAddressesEventsObs$.pipe(
+      evm.event.evmAddressesEventsObs$.pipe(
         filter((event) => Array.isArray(event?.addresses) && event.addresses.length > 0)
       )
     );

@@ -6,7 +6,7 @@ export const NETWORK_CONFIGS: Record<NetworkType, NetworkConfig> = {
         substrateWsRpcUrl: 'ws://34.123.142.246:9944',
         substrateRpcUrl: 'http://34.123.142.246:9944',
         evmRpcUrl: 'http://34.123.142.246:8545',
-        blockExplorerUrl: 'https://testnet.reefscan.com',
+        blockExplorerUrl: 'https://blockscout-kusama-asset-hub.parity-chains-scw.parity.io',
     },
     [NetworkType.ReefTestnet]: {
         name:"reef-testnet",
