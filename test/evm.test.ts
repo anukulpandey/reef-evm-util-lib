@@ -40,6 +40,14 @@ describe("EVM tests", () => {
         },
     );
 
+    test(
+        "should fetch reef token holders",
+        async () => {
+            const reefTokenHolders = await evm.addresses.getReefHolders();
+            console.log("reefTokenHolders===",reefTokenHolders);
+        },
+    );
+
    
 
 
