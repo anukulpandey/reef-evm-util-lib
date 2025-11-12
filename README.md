@@ -21,7 +21,7 @@ Before using any module, you must **initialize the Reef state** (network + provi
 ```ts
 import { reefState, network } from "@reef-chain/evm-util-lib";
 
-await reefState.initReefState(network.config.NETWORK_CONFIGS.ReefLocalhost);
+await reefState.initReefState(network.config.NETWORK_CONFIGS.localhost);
 
 console.log("✅ Reef initialized!");
 ```
@@ -53,7 +53,7 @@ Must be called **before any other module**.
 ```ts
 import { reefState, network } from "@reef-chain/evm-util-lib";
 
-await reefState.initReefState(network.config.NETWORK_CONFIGS.ReefMainnet);
+await reefState.initReefState(network.config.NETWORK_CONFIGS.localhost);
 ```
 
 ---
@@ -117,7 +117,7 @@ Built-in configurations for quick setup:
 Example:
 
 ```ts
-const mainnet = network.config.NETWORK_CONFIGS.ReefMainnet;
+const mainnet = network.config.NETWORK_CONFIGS.mainnet;
 ```
 
 ---
@@ -229,7 +229,7 @@ Signs arbitrary data or messages.
 ```ts
 import { reefState, network, signers } from "@reef-chain/evm-util-lib";
 
-await reefState.initReefState(network.config.NETWORK_CONFIGS.ReefLocalhost);
+await reefState.initReefState(network.config.NETWORK_CONFIGS.localhost);
 const signer = new signers.MnemonicSigner("seed sock milk update ...");
 
 const addr = await signer.getAddress();
@@ -404,7 +404,7 @@ All methods return properly typed promises.
 ```ts
 import { reefState, network, evm, account } from "@reef-chain/evm-util-lib";
 
-await reefState.initReefState(network.config.NETWORK_CONFIGS.ReefMainnet);
+await reefState.initReefState(network.config.NETWORK_CONFIGS.mainnet);
 
 const block = await evm.blocks.getBlockInfo("latest");
 const tokens = await evm.tokens.getTokens("reef");
