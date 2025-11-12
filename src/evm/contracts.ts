@@ -1,8 +1,8 @@
 import axios from "axios";
 import { reefState } from "..";
-import type { SmartContract, SmartContractsResponse } from "../types/sc";
+import type { SmartContract, SmartContractsResponse } from "../types/contracts";
 
-export const getVerifiedSmartContracts = async (
+export const getAllContracts = async (
   query?: string
 ): Promise<SmartContract[]> => {
   const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
@@ -14,6 +14,24 @@ export const getVerifiedSmartContracts = async (
         ...(query ? { q: query } : {}),
         filter: "solidity",
       },
+      headers: { accept: "application/json" },
+    });
+
+    return res.data.items;
+  } catch (error: any) {
+    console.error("❌ Error fetching verified smart contracts:", error.message || error);
+    throw error;
+  }
+};
+
+export const getVerifiedContract = async (
+  address: string
+): Promise<any> => {
+  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const requestUrl = `${blockExplorerUrl}/api/v2/smart-contracts/${address}`;
+
+  try {
+    const res = await axios.get<any>(requestUrl, {
       headers: { accept: "application/json" },
     });
 

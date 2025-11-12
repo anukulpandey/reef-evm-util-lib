@@ -94,7 +94,7 @@ describe("EVM tests", () => {
     test(
         "should fetch all smart contracts",
         async () => {
-            const smartContracts = await evm.contracts.getVerifiedSmartContracts();
+            const smartContracts = await evm.contracts.getAllContracts();
             // as the kusama chain has no smart contracts verified due to resolc compiler not integrated in their blockscout
             expect(smartContracts.length).toBe(0);
         },
