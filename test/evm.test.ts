@@ -52,6 +52,7 @@ describe("EVM tests", () => {
         "should fetch tokens all kind of tokens",
         async () => {
             const tokens = await evm.tokens.getTokens("",["ERC-20", "ERC-721", "ERC-1155"]);
+            console.log("tokens===",tokens);
             expect(tokens.length).toBeGreaterThan(0);
         },
     );
@@ -71,6 +72,14 @@ describe("EVM tests", () => {
             const tokens = await evm.tokens.getTokens("",["ERC-721"]);
             // as testnet has no ERC-721 tokens , expect 0
             expect(tokens.length).toBe(0);
+        },
+    );
+   
+    test(
+        "should fetch token transfers for wrapped ether",
+        async () => {
+            const transfers = await evm.tokens.getTokenTransfers("0x057a1Ac4e0BB9ef2a26E214F380F69AECeC7E3F0");
+            expect(transfers.length).toBeGreaterThan(0);
         },
     );
    

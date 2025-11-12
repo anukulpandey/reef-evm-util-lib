@@ -132,3 +132,64 @@ export interface ReefHoldersResponse {
   next_page_params: Record<string, any> | null;
   exchange_rate: string;
 }
+
+
+export type TokenType = "ERC-20" | "ERC-721" | "ERC-1155";
+
+export interface Token {
+  address_hash: string;
+  circulating_market_cap: string;
+  decimals: string;
+  exchange_rate: string | null;
+  holders_count: string;
+  icon_url: string | null;
+  name: string;
+  symbol: string;
+  total_supply: string;
+  type: TokenType;
+  volume_24h: string;
+}
+
+export interface TokensResponse {
+  items: Token[];
+  next_page_params: Record<string, any> | null;
+  total_count: number;
+}
+
+
+export interface TokenTransfer {
+  block_hash: string;
+  block_number: number;
+  from: {
+    ens_domain_name: string | null;
+    hash: string;
+    is_contract: boolean;
+  };
+  log_index: number;
+  method: string;
+  timestamp: string;
+  to: {
+    ens_domain_name: string | null;
+    hash: string;
+    is_contract: boolean;
+  };
+  token: {
+    address_hash: string;
+    decimals: string;
+    name: string;
+    symbol: string;
+    total_supply: string;
+    type: string;
+  };
+  total: {
+    decimals: string;
+    value: string;
+  };
+  transaction_hash: string;
+  type: string;
+}
+
+export interface TokenTransfersResponse {
+  items: TokenTransfer[];
+  next_page_params: Record<string, any> | null;
+}
