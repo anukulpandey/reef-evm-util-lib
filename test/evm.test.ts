@@ -44,10 +44,36 @@ describe("EVM tests", () => {
         "should fetch reef token holders",
         async () => {
             const reefTokenHolders = await evm.addresses.getReefHolders();
-            console.log("reefTokenHolders===",reefTokenHolders);
+            expect(reefTokenHolders.length).toBeGreaterThan(0);
         },
     );
 
+    test(
+        "should fetch tokens all kind of tokens",
+        async () => {
+            const tokens = await evm.tokens.getTokens("",["ERC-20", "ERC-721", "ERC-1155"]);
+            expect(tokens.length).toBeGreaterThan(0);
+        },
+    );
+
+    test(
+        "should fetch all ERC-1155 tokens",
+        async () => {
+            const tokens = await evm.tokens.getTokens("",["ERC-1155"]);
+            // as testnet has no ERC-1155 tokens , expect 0
+            expect(tokens.length).toBe(0);
+        },
+    );
+
+    test(
+        "should fetch all ERC-721 tokens",
+        async () => {
+            const tokens = await evm.tokens.getTokens("",["ERC-721"]);
+            // as testnet has no ERC-721 tokens , expect 0
+            expect(tokens.length).toBe(0);
+        },
+    );
+   
    
 
 
