@@ -1,11 +1,11 @@
 import axios from "axios";
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import type { SmartContract, SmartContractsResponse } from "../types/contracts";
 
 export const getAllContracts = async (
   query?: string
 ): Promise<SmartContract[]> => {
-  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const blockExplorerUrl = getNetwork().blockExplorerUrl;
   const requestUrl = `${blockExplorerUrl}/api/v2/smart-contracts`;
 
   try {
@@ -27,7 +27,7 @@ export const getAllContracts = async (
 export const getVerifiedContract = async (
   address: string
 ): Promise<any> => {
-  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const blockExplorerUrl = getNetwork().blockExplorerUrl;
   const requestUrl = `${blockExplorerUrl}/api/v2/smart-contracts/${address}`;
 
   try {

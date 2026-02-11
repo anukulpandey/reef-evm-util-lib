@@ -1,21 +1,29 @@
 {
   "name": "reef-evm-util-lib",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "main": "./dist/evm-util-lib.umd.cjs",
-  "module": "./dist/evm-util-lib.js",
+  "main": "./dist/reef-evm-util-lib.cjs",
+  "module": "./dist/reef-evm-util-lib.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/evm-util-lib.js",
-      "require": "./dist/evm-util-lib.umd.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/reef-evm-util-lib.js",
+      "require": "./dist/reef-evm-util-lib.cjs"
     }
   },
+  "files": ["dist"],
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest"
+  },
+  "dependencies": {
+    "@polkadot/api": "^16.5.1",
+    "@reef-chain/evm-provider": "^4.0.5",
+    "axios": "^1.7.0",
+    "ethers": "^6.15.0",
+    "pusher-js": "^8.4.0",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@types/node": "^24.9.1",
@@ -23,12 +31,5 @@
     "vite": "^7.1.7",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.4"
-  },
-  "dependencies": {
-    "@polkadot/api": "^16.5.1",
-    "@reef-chain/evm-provider": "^4.0.5",
-    "ethers": "^6.15.0",
-    "pusher-js": "^8.4.0",
-    "rxjs": "^7.8.2"
   }
 }

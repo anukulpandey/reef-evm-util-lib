@@ -1,11 +1,11 @@
-import { reefState } from "..";
+import { getProvider } from "../reefState/provider";
 import { decodeAddress, keccakAsHex } from "@polkadot/util-crypto";
 import { u8aToHex } from "@polkadot/util";
 
 const AMOUNT_WEI = 10_000_000_000_000_000_000n; // 10 REEF
 
 export const getBalance = async (address: string): Promise<string> => {
-    const provider = reefState.getProvider();
+    const provider = getProvider();
     const accountInfo = await provider.api.query.system.account(address);
     return (accountInfo as any).data.free.toString();
 };
@@ -18,7 +18,7 @@ export const getReviveEvmAddress = async (address: string): Promise<string> => {
 
 export const sendToReviveEvmAddress = async (keypair:any,toAddress: string): Promise<boolean> => {
     try {
-        const provider = reefState.getProvider();
+        const provider = getProvider();
         const api = provider.api;
 
         const transferMeta = api.tx.revive.transfer.meta.toJSON();

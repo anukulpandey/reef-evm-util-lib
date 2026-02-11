@@ -1,10 +1,10 @@
 import axios from "axios";
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import type { TransactionInfo } from "../types/evm";
 
 export const getTransactionInfo = async (txHash: string): Promise<TransactionInfo> => {
   try {
-    const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+    const blockExplorerUrl = getNetwork().blockExplorerUrl;
     const requestUrl = `${blockExplorerUrl}/api/v2/transactions/${txHash}`;
 
     const res = await axios.get(requestUrl, {

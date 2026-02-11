@@ -1,10 +1,10 @@
 import axios from "axios";
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import type { ReefHolder, ReefHoldersResponse } from "../types/evm";
 
 export const getReefHolders = async (): Promise<ReefHolder[]> => {
   const allHolders: ReefHolder[] = [];
-  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const blockExplorerUrl = getNetwork().blockExplorerUrl;
   let requestUrl = `${blockExplorerUrl}/api/v2/addresses`;
   let nextParams: Record<string, any> | null = null;
 
@@ -33,7 +33,7 @@ export const getReefHolders = async (): Promise<ReefHolder[]> => {
 
 export const getTokenHolders = async (address:string): Promise<any[]> => {
     const allHolders: any[] = [];
-    const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+    const blockExplorerUrl = getNetwork().blockExplorerUrl;
     let requestUrl = `${blockExplorerUrl}/api/v2/tokens/${address}/holders`;
     let nextParams: Record<string, any> | null = null;
   

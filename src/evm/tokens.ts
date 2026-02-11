@@ -1,12 +1,12 @@
 import axios from "axios";
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import type { Token, TokensResponse, TokenTransfer, TokenTransfersResponse, TokenType } from "../types/evm";
 
 export const getTokens = async (
   query: string,
   types: TokenType[] = ["ERC-20", "ERC-721", "ERC-1155"]
 ): Promise<Token[]> => {
-  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const blockExplorerUrl = getNetwork().blockExplorerUrl;
   const requestUrl = `${blockExplorerUrl}/api/v2/tokens`;
 
   try {
@@ -29,7 +29,7 @@ export const getTokenTransfers = async (
   tokenAddress: string
 ): Promise<TokenTransfer[]> => {
   const allTransfers: TokenTransfer[] = [];
-  const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+  const blockExplorerUrl = getNetwork().blockExplorerUrl;
   let requestUrl = `${blockExplorerUrl}/api/v2/tokens/${tokenAddress}/transfers`;
   let nextParams: Record<string, any> | null = null;
 

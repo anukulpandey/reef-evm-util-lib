@@ -1,11 +1,11 @@
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import axios from "axios";
 
 export const getNftsForUser = async (
     address: string
   ): Promise<any> => {
     const nfts: any[] = [];
-    const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+    const blockExplorerUrl = getNetwork().blockExplorerUrl;
     let requestUrl = `${blockExplorerUrl}/api/v2/addresses/${address}/nft?type=ERC-721%2CERC-404%2CERC-1155`;
     let nextParams: Record<string, any> | null = null;
   

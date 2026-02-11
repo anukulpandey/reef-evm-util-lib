@@ -1,11 +1,11 @@
 import axios from "axios";
-import { reefState } from "..";
+import { getNetwork } from "../reefState/network";
 import type { BlockInfo } from "../types/evm";
 
-// fetches block info 
+// fetches block info
 export const getBlockInfo = async (hashOrBlockNo: string): Promise<BlockInfo> => {
   try {
-    const blockExplorerUrl = reefState.getNetwork().blockExplorerUrl;
+    const blockExplorerUrl = getNetwork().blockExplorerUrl;
     const requestUrl = `${blockExplorerUrl}/api/v2/blocks/${hashOrBlockNo}`;
 
     const res = await axios.get(requestUrl, {

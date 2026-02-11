@@ -1,18 +1,28 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import path from "path";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: "src/index.ts",
       name: "ReefEvmUtilLib",
-      fileName: (format) => `evm-util-lib.${format}.js`,
-      formats: ["es", "umd"],
+      fileName: "reef-evm-util-lib",
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: [],
+      external: [
+        "@polkadot/api",
+        "@polkadot/types",
+        "@polkadot/types/types",
+        "@polkadot/util",
+        "@polkadot/util-crypto",
+        "@reef-chain/evm-provider",
+        "axios",
+        "ethers",
+        "pusher-js",
+        "rxjs",
+      ],
     },
   },
-  plugins: [dts()],
+  plugins: [dts({ rollupTypes: true })],
 });

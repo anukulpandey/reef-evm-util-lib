@@ -6,8 +6,10 @@ export interface NetworkConfig{
     blockExplorerUrl:string;
 }
 
-export enum NetworkType {
-    ReefMainnet = "mainnet",
-    ReefTestnet = "testnet",
-    ReefLocalhost = "localhost",
-}
+export const NetworkType = {
+    ReefMainnet: "mainnet",
+    ReefTestnet: "testnet",
+    ReefLocalhost: "localhost",
+} as const;
+
+export type NetworkType = (typeof NetworkType)[keyof typeof NetworkType];
