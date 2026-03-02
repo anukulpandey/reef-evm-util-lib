@@ -20,6 +20,6 @@ export const NETWORK_CONFIGS: Record<NetworkType, NetworkConfig> = {
         substrateWsRpcUrl:"ws://localhost:9944",
         substrateRpcUrl: 'http://localhost:9944',
         evmRpcUrl: 'http://localhost:8545',
-        blockExplorerUrl: 'http://localhost:4000/',
+        blockExplorerUrl: 'http://localhost:4000',
     }
 };
