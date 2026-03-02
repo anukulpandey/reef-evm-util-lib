@@ -3,10 +3,10 @@ import { NetworkType, type NetworkConfig } from '../types/network';
 export const NETWORK_CONFIGS: Record<NetworkType, NetworkConfig> = {
     [NetworkType.ReefMainnet]: {
         name:"reef-mainnet",
-        substrateWsRpcUrl: 'ws://34.123.142.246:9944',
-        substrateRpcUrl: 'http://34.123.142.246:9944',
-        evmRpcUrl: 'http://34.123.142.246:8545',
-        blockExplorerUrl: 'https://blockscout-kusama-asset-hub.parity-chains-scw.parity.io',
+        substrateWsRpcUrl: 'ws://reeftestnet1-reefethrpc-dab87f-72-60-35-83.traefik.me:9944',
+        substrateRpcUrl: 'http://reeftestnet1-reefethrpc-dab87f-72-60-35-83.traefik.me:9944',
+        evmRpcUrl: 'http://reeftestnet1-reefethrpc-dab87f-72-60-35-83.traefik.me',
+        blockExplorerUrl: 'http://136.111.64.14:4001/',
     },
     [NetworkType.ReefTestnet]: {
         name:"reef-testnet",
@@ -20,6 +20,6 @@ export const NETWORK_CONFIGS: Record<NetworkType, NetworkConfig> = {
         substrateWsRpcUrl:"ws://localhost:9944",
         substrateRpcUrl: 'http://localhost:9944',
         evmRpcUrl: 'http://localhost:8545',
-        blockExplorerUrl: 'http://localhost',
+        blockExplorerUrl: 'http://localhost:4001/',
     }
 };

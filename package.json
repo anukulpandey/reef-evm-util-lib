@@ -1,6 +1,6 @@
 {
   "name": "reef-evm-util-lib",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "type": "module",
   "main": "./dist/reef-evm-util-lib.cjs",
   "module": "./dist/reef-evm-util-lib.js",
